@@ -20,7 +20,7 @@ def download_and_index_item(item_id):
     url = "https://hacker-news.firebaseio.com/v0/item/%s.json?print=pretty" % item_id
     h = {'User-Agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.124 Safari/537.36"}
     response = yield http_client.fetch(url, headers=h)
-    item = json.loads(response.body.decode())
+    item = json.loads(response.body.decode('utf_8'))
 
     # not needed
     if 'kids' in item:
@@ -52,7 +52,7 @@ def download_and_index_item(item_id):
 @tornado.gen.coroutine
 def download_topstories():
     response = yield http_client.fetch('https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty')
-    top100_ids = json.loads(response.body.decode())
+    top100_ids = json.loads(response.body.decode('utf_8'))
     print("Got Top 100")
 
     for item_id in top100_ids:
