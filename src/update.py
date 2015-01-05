@@ -4,7 +4,10 @@ import tornado.gen
 import tornado.options
 import json
 import sys
-from urllib.parse import urlparse
+try:
+    from urllib.parse import urlparse
+except:
+    from urlparse import urlparse
 
 
 STORIES_ONLY = True
