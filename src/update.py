@@ -11,9 +11,10 @@ STORIES_ONLY = True
 
 http_client = AsyncHTTPClient()
 
+
 @tornado.gen.coroutine
 def download_and_index_item(item_id):
-    
+
     url = "https://hacker-news.firebaseio.com/v0/item/%s.json?print=pretty" % item_id
     h = {'User-Agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.124 Safari/537.36"}
     response = yield http_client.fetch(url, headers=h)
@@ -34,7 +35,7 @@ def download_and_index_item(item_id):
         u = urlparse.urlparse(item['url'])
         item['domain'] = u.hostname.replace("www.", "") if u.hostname else ""
 
-    # ES uses milliseconds        
+    # ES uses milliseconds
     item['time'] = int(item['time']) * 1000
 
     es_url = "http://localhost:9200/hn/%s/%s" % (item['type'], item['id'])
@@ -45,6 +46,7 @@ def download_and_index_item(item_id):
     else:
         sys.stdout.write('.')
         sys.stdout.flush()
+
 
 @tornado.gen.coroutine
 def download_topstories():
