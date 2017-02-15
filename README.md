@@ -8,9 +8,9 @@ Hacker News officially released their [API](http://blog.ycombinator.com/hacker-n
 
 [Elasticsearch](http://elasticsearch.org) is currently the most popular Open-Source search engine, used for a wide variety of use cases. It natively works with JSON documents so this sounds like a perfect fit.
 
-A demo version of the code from this repo is currently running here: [http://hn.21zoo.com](http://ohardt.us/hn-21zoo)
+A demo version of the code from this repo is currently running here: [http://hn.21zoo.com](http://l.21zoo.com/21zoo)
 
-It runs on a [DigitalOcean 512MB droplet](http://ohardt.us/go2digitalocean) droplet and hosts the Elasticsearch node and a simple Tornado app for the frontend. Crontab runs the update every 5 minutes.
+It runs on a [DigitalOcean 512MB droplet](http://l.21zoo.com/do-rocks) droplet and hosts the Elasticsearch node and a simple Tornado app for the frontend. Crontab runs the update every 5 minutes.
 
 
 #### Prerequisites
